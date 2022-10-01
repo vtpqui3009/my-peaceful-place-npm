@@ -29,11 +29,14 @@ export const currentUser = (
   }
 
   try {
+    console.log(req.session);
+    console.log(req.session.jwt);
     const payload = jwt.verify(
       req.session.jwt,
       "vievie100920"
       // process.env.JWT_KEY!
     ) as UserPayload;
+    console.log(payload);
     req.currentUser = payload;
   } catch (error) {}
   next();
