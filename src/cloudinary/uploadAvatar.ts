@@ -22,20 +22,22 @@ export const uploadAvatar = async (
   next: NextFunction
 ) => {
   try {
-    const { username } = req.body;
+    if (!req.body.username) {
+      return next();
+    }
     const existingProfileFolders = await cloudinary.api.sub_folders(`profile`);
     const isExistingFolder = await existingProfileFolders.folders.some(
-      (folder: any) => folder.name === username
+      (folder: any) => folder.name === req.body.username
     );
     if (!isExistingFolder) {
-      await cloudinary.api.create_folder(`/profile/${username}`);
+      await cloudinary.api.create_folder(`/profile/${req.body.username}`);
     }
     if (typeof req.file?.path !== "string") {
       return next();
     }
     const response = await cloudinary.uploader.upload(req.file.path, {
       public_id: `profile_${req.file.filename}`,
-      folder: `/profile/${username}`,
+      folder: `/profile/${req.body.username}`,
     });
     const responseData = {
       url: response.url,
