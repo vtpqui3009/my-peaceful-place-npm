@@ -37,4 +37,4 @@ const cloudinaryUpload = router.post(
   }
 );
 
-export default cloudinaryUpload;
+export { router as uploadAvatar };
