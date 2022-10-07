@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from "express";
 import cloudinary from "../utils/cloudinary";
 import multerUpload from "../utils/multer";
 const router = express.Router();
-const cloudinaryUpload = router.post(
+router.post(
   "/avatar",
   multerUpload.single("avatar"),
   async (req: Request, res: Response, next: NextFunction) => {
