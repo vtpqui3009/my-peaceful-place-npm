@@ -1,16 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-interface Avatar {
-  url: string;
-  size: number;
-  resource_type: string;
-  created_at: string;
-}
+
 interface UserPayload {
   id: string;
   email: string;
   username: string;
-  avatar: Avatar;
   isAdmin: boolean;
   defaultProvidedStorageCapacity: string;
   remainningStorageCapacity: string;
