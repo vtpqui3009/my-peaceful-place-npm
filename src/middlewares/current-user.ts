@@ -1,10 +1,16 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-
+interface Avatar {
+  url: string;
+  size: number;
+  resource_type: string;
+  created_at: string;
+}
 interface UserPayload {
   id: string;
   email: string;
-  name: string;
+  username: string;
+  avatar: Avatar;
   isAdmin: boolean;
   defaultProvidedStorageCapacity: string;
   remainningStorageCapacity: string;
@@ -19,7 +25,6 @@ declare global {
   }
 }
 export const currentUser = (
-  err: Error,
   req: Request,
   res: Response,
   next: NextFunction
@@ -31,9 +36,11 @@ export const currentUser = (
   try {
     const payload = jwt.verify(
       req.session.jwt,
-      process.env.JWT_KEY!
+      "vievie1009"
+      // process.env.JWT_KEY!
     ) as UserPayload;
     req.currentUser = payload;
-  } catch (error) {}
+  } catch (err) {}
+
   next();
 };
