@@ -30,7 +30,7 @@ const cloudinaryUpload = router.post(
         resource_type: response.resource_type,
         created_at: response.created_at,
       };
-      res.status(201).send(responseData);
+      return responseData;
     } catch (error) {
       console.log(error);
     }
