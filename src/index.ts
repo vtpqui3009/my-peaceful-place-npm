@@ -12,3 +12,4 @@ export * from "./middlewares/require-auth";
 export * from "./middlewares/validate-request";
 
 export * from "./cloudinary/uploadAvatar";
+export * from "./utils/multer";
