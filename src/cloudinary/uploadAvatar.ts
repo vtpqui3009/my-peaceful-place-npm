@@ -32,6 +32,7 @@ export const uploadAvatar = async (
     if (!isExistingFolder) {
       await cloudinary.api.create_folder(`/profile/${req.body.username}`);
     }
+    console.log(req.file?.path);
     if (typeof req.file?.path !== "string") {
       return next();
     }
