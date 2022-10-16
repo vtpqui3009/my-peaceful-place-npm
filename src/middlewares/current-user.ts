@@ -8,7 +8,10 @@ interface UserPayload {
   isAdmin: boolean;
   defaultProvidedStorageCapacity: string;
   remainningStorageCapacity: string;
+  folders: [];
+  files: [];
   isDeleted: boolean;
+  createdAt: string;
 }
 
 declare global {
