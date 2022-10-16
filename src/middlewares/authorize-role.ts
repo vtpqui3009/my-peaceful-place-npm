@@ -6,7 +6,7 @@ export const authorizedAdmin = (
   res: Response,
   next: NextFunction
 ) => {
-  if (req.currentUser?.isAdmin == false) {
+  if (req.currentUser?.isAdmin === false) {
     throw new NotHavePermissionError("Just admin is allowed to do this action");
   }
 
