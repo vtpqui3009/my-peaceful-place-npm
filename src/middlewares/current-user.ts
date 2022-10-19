@@ -10,7 +10,6 @@ interface UserPayload {
   remainningStorageCapacity: string;
   folders: [];
   files: [];
-  isDeleted: boolean;
   createdAt: string;
 }
 
